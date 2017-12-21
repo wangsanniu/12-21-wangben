@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#button {
+				background: red;
+			}
+			
+			#button2 {
+				background: yellow;
+			}
+			
+			#button3 {
+				background: green;
+			}
+			
+			div {
+				margin-top: 20px;
+				font-size: 16px;
+				width: 50px;
+				height: 50px;
+				text-align: center;
+				line-height: 50px;
+				cursor: pointer;
+			}
+		</style>
+	</head>
+
+	<body>
+		<h1 id="h1"></h1>
+
+		<div id="button">暂停</div>
+		<div id="button2">恢复</div>
+		<div id="button3">结束</div>
+
+	</body>
+
+</html>
+<script>
+	window.onload = function() {
+		var oh1 = document.getElementById("h1");
+		var oButton=document.getElementById('button')
+		var oButton2=document.getElementById('button2')
+		var oButton3=document.getElementById('button3')
+
+		var timer,
+		num=20;
+		function showTime(){
+			if(num > 0) {
+				num = num - 1;
+				oh1.innerHTML = '00:00:' + num;
+			} 
+			 else {
+				clearInterval(timer);
+			}
+		}
+		timer=setInterval(showTime,1000);
+		oButton.onclick = function(){
+			clearInterval(timer)
+		}
+		oButton2.onclick = function(){
+			timer = setInterval(showTime, 1000);
+		}
+		oButton3.onclick = function(){
+			clearInterval(timer)
+			oh1.innerHTML=null;
+		}
+	}
+</script>
